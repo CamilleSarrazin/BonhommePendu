@@ -86,6 +86,16 @@ export class AppComponent {
           this.gameData.guessedLetters.push(event.letter);
           break;
         }
+        case "Win": {
+          this.gameData.won = true;
+          break;
+        }
+        case "Lose": {
+          this.gameData.lost = true;
+          this.wronglyGuessedWord = event.word; //pour afficher le mot non deviné
+          setTimeout(() => this.hangman.showMore(), 1000); //pour afficher les yeux X rouges
+          break;
+        }
       }
 
       if(event.events){
